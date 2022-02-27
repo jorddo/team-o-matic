@@ -11,6 +11,68 @@ const writeToFile = (fileName, data) => {
 };
 
 // TODO: need function for initialization
-
+const init = () => {
+  return inquirer.prompt(type).then((data) => {
+    if (data.employeeType === 'Manager') {
+      inquirer.prompt([
+        {
+          type: 'input',
+          name: 'name',
+          message: `What is the employee's name?`,
+        },
+        {
+          type: 'input',
+          name: 'email',
+          message: `What is the employee's email address?`,
+        },
+      ]);
+    } else if (data.employeeType === 'Engineer') {
+      inquirer.prompt([
+        {
+          type: 'input',
+          name: 'name',
+          message: `What is the employee's name?`,
+        },
+        {
+          type: 'input',
+          name: 'email',
+          message: `What is the employee's email address?`,
+        },
+        {
+          type: 'input',
+          name: 'github',
+          message: `What is the employee's GitHub username?`,
+        },
+      ]);
+    } else {
+      inquirer.prompt([
+        {
+          type: 'input',
+          name: 'name',
+          message: `What is the employee's name?`,
+        },
+        {
+          type: 'input',
+          name: 'email',
+          message: `What is the employee's email address?`,
+        },
+        {
+          type: 'input',
+          name: 'college',
+          message: `Where did the employee attend college?`,
+        },
+      ]);
+    }
+  });
+};
 // TODO: inquirer questions
-const questions = [];
+const type = [
+  {
+    type: 'list',
+    name: 'employeeType',
+    message: 'Please make an employee type selection:',
+    choices: ['Manager', 'Engineer', 'Intern'],
+  },
+];
+
+init();
