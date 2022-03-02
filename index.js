@@ -1,5 +1,6 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
+const generateHTML = require('./utils/generatePage');
 
 // writing the HTML page
 const writeToFile = (fileName, data) => {
