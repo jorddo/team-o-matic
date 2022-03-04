@@ -13,59 +13,66 @@ const writeToFile = (fileName, data) => {
 
 // TODO: need function for initialization
 const init = () => {
-  return inquirer.prompt(type).then((data) => {
-    if (data.employeeType === 'Manager') {
-      inquirer.prompt([
-        {
-          type: 'input',
-          name: 'name',
-          message: `What is the employee's name?`,
-        },
-        {
-          type: 'input',
-          name: 'email',
-          message: `What is the employee's email address?`,
-        },
-      ]);
-    } else if (data.employeeType === 'Engineer') {
-      inquirer.prompt([
-        {
-          type: 'input',
-          name: 'name',
-          message: `What is the employee's name?`,
-        },
-        {
-          type: 'input',
-          name: 'email',
-          message: `What is the employee's email address?`,
-        },
-        {
-          type: 'input',
-          name: 'github',
-          message: `What is the employee's GitHub username?`,
-        },
-      ]);
-    } else {
-      inquirer.prompt([
-        {
-          type: 'input',
-          name: 'name',
-          message: `What is the employee's name?`,
-        },
-        {
-          type: 'input',
-          name: 'email',
-          message: `What is the employee's email address?`,
-        },
-        {
-          type: 'input',
-          name: 'college',
-          message: `Where did the employee attend college?`,
-        },
-      ]);
-    }
-  });
+  return inquirer
+    .prompt(type)
+    .then((data) => {
+      if (data.employeeType === 'Manager') {
+        inquirer.prompt([
+          {
+            type: 'input',
+            name: 'name',
+            message: `What is the employee's name?`,
+          },
+          {
+            type: 'input',
+            name: 'email',
+            message: `What is the employee's email address?`,
+          },
+        ]);
+        // need assignment of office number function here?
+      } else if (data.employeeType === 'Engineer') {
+        inquirer.prompt([
+          {
+            type: 'input',
+            name: 'name',
+            message: `What is the employee's name?`,
+          },
+          {
+            type: 'input',
+            name: 'email',
+            message: `What is the employee's email address?`,
+          },
+          {
+            type: 'input',
+            name: 'github',
+            message: `What is the employee's GitHub username?`,
+          },
+        ]);
+      } else {
+        inquirer.prompt([
+          {
+            type: 'input',
+            name: 'name',
+            message: `What is the employee's name?`,
+          },
+          {
+            type: 'input',
+            name: 'email',
+            message: `What is the employee's email address?`,
+          },
+          {
+            type: 'input',
+            name: 'college',
+            message: `Where did the employee attend college?`,
+          },
+        ]);
+      }
+    })
+    .then((pageData) => {
+      writeToFile('./dist/index.html', generateHTML(pageData));
+    });
 };
+
 // TODO: inquirer questions
 const type = [
   {
@@ -77,3 +84,4 @@ const type = [
 ];
 
 init();
+console.log(type);
