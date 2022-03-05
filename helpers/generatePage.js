@@ -24,140 +24,41 @@ function generateHTML(data) {
     <main>
       <!-- beginning of cards -->
       <div class="row row-cols-1 row-cols-md-3 g-4">
-        ${data.employees.map((employee) => {
-          <div class='col'>
-            <div class='card h-100'>
-              <div class='card-body'>
-                <h5 class='card-title'>${employee.name}</h5>
-                <p class='card-text'>${employee.employeeType}</p>
-                <div class='card'>
-                  <div class='card-body'>
-                    <div class='card'>
-                      <div class='card-body'>ID: </div>
-                    </div>
-                    <div class='card'>
-                      <div class='card-body'>Email: ${employee.email}</div>
-                    </div>
-                    <div class='card'>
-                      <div class='card-body'>
-                        $
-                        {employee.office || employee.github || employee.college}
+        ${data.employees
+          .map((employee) => {
+            let addtlInfo;
+
+            if (employee.office)
+              addtlInfo = `Office Number: ${employee.office}`;
+            if (employee.github) addtlInfo = `Github: ${employee.github}`;
+            if (employee.college) addtlInfo = `College: ${employee.college}`;
+            return `
+            <div class='col'>
+              <div class='card h-100'>
+                <div class='card-body'>
+                  <h5 class='card-title'>${employee.name}</h5>
+                  <p class='card-text'>${employee.employeeType}</p>
+                  <div class='card'>
+                    <div class='card-body'>
+                      <div class='card'>
+                        <div class='card-body'>ID: ${employee.id}</div>
+                      </div>
+                      <div class='card'>
+                        <div class='card-body'>Email: ${employee.email}</div>
+                      </div>
+                      <div class='card'>
+                        <div class='card-body'>
+                          ${addtlInfo}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>;
-        })}
-
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">${data.name}</h5>
-              <p class="card-text">${data.employeeType}</p>
-              <div class="card">
-                <div class="card-body">
-                  <div class="card">
-                    <div class="card-body">ID: </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">Email: ${data.email}</div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">${
-                      data.office || data.github || data.college
-                    }</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">Alec</h5>
-              <p class="card-text">Engineer</p>
-              <div class="card">
-                <div class="card-body">
-                  <div class="card">
-                    <div class="card-body">ID: 2</div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">Email: alec@fakemail.com</div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">GitHub: ibealec</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">Grace</h5>
-              <p class="card-text">Engineer</p>
-              <div class="card">
-                <div class="card-body">
-                  <div class="card">
-                    <div class="card-body">ID: 3</div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">Email: grace@fakemail.com</div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">GitHub: gchoi2u</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">Tammer</h5>
-              <p class="card-text">Engineer</p>
-              <div class="card">
-                <div class="card-body">
-                  <div class="card">
-                    <div class="card-body">ID: 4</div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">Email: tammer@fakemail.com</div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">GitHub: tammerg</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">John</h5>
-              <p class="card-text">Intern</p>
-              <div class="card">
-                <div class="card-body">
-                  <div class="card">
-                    <div class="card-body">ID: 5</div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">Email: john@fakemail.com</div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">GitHub: johnjohn</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          `;
+          })
+          .join('')}
       </div>
     </main>
   </body>

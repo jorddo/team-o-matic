@@ -18,11 +18,6 @@ const managerQuestions = [
     name: 'email',
     message: `What is the employee's email address?`,
   },
-  {
-    type: 'input',
-    name: 'office',
-    message: `What is the employee's office number?`,
-  },
 ];
 
 const engineerQuestions = [
