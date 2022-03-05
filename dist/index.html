@@ -1,5 +1,4 @@
-function generateHTML(data) {
-  return `
+
   <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,50 +23,21 @@ function generateHTML(data) {
     <main>
       <!-- beginning of cards -->
       <div class="row row-cols-1 row-cols-md-3 g-4">
-        ${data.employees.map((employee) => {
-          <div class='col'>
-            <div class='card h-100'>
-              <div class='card-body'>
-                <h5 class='card-title'>${employee.name}</h5>
-                <p class='card-text'>${employee.employeeType}</p>
-                <div class='card'>
-                  <div class='card-body'>
-                    <div class='card'>
-                      <div class='card-body'>ID: </div>
-                    </div>
-                    <div class='card'>
-                      <div class='card-body'>Email: ${employee.email}</div>
-                    </div>
-                    <div class='card'>
-                      <div class='card-body'>
-                        $
-                        {employee.office || employee.github || employee.college}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>;
-        })}
-
         <div class="col">
           <div class="card h-100">
             <div class="card-body">
-              <h5 class="card-title">${data.name}</h5>
-              <p class="card-text">${data.employeeType}</p>
+              <h5 class="card-title">jordan</h5>
+              <p class="card-text">Manager</p>
               <div class="card">
                 <div class="card-body">
                   <div class="card">
                     <div class="card-body">ID: </div>
                   </div>
                   <div class="card">
-                    <div class="card-body">Email: ${data.email}</div>
+                    <div class="card-body">Email: sdfadf</div>
                   </div>
                   <div class="card">
-                    <div class="card-body">${
-                      data.office || data.github || data.college
-                    }</div>
+                    <div class="card-body">33</div>
                   </div>
                 </div>
               </div>
@@ -162,7 +132,3 @@ function generateHTML(data) {
     </main>
   </body>
 </html>
-`;
-}
-
-module.exports = generateHTML;

@@ -1,6 +1,7 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const generateHTML = require('./helpers/generatePage');
+const questions = require('./helpers/questions');
 
 // writing the HTML page
 const writeToFile = (fileName, data) => {
@@ -11,77 +12,30 @@ const writeToFile = (fileName, data) => {
   });
 };
 
-// TODO: need function for initialization
-const init = () => {
-  return inquirer
-    .prompt(type)
-    .then((data) => {
-      if (data.employeeType === 'Manager') {
-        inquirer.prompt([
-          {
-            type: 'input',
-            name: 'name',
-            message: `What is the employee's name?`,
-          },
-          {
-            type: 'input',
-            name: 'email',
-            message: `What is the employee's email address?`,
-          },
-        ]);
-        // need assignment of office number function here?
-      } else if (data.employeeType === 'Engineer') {
-        inquirer.prompt([
-          {
-            type: 'input',
-            name: 'name',
-            message: `What is the employee's name?`,
-          },
-          {
-            type: 'input',
-            name: 'email',
-            message: `What is the employee's email address?`,
-          },
-          {
-            type: 'input',
-            name: 'github',
-            message: `What is the employee's GitHub username?`,
-          },
-        ]);
-      } else {
-        inquirer.prompt([
-          {
-            type: 'input',
-            name: 'name',
-            message: `What is the employee's name?`,
-          },
-          {
-            type: 'input',
-            name: 'email',
-            message: `What is the employee's email address?`,
-          },
-          {
-            type: 'input',
-            name: 'college',
-            message: `Where did the employee attend college?`,
-          },
-        ]);
-      }
-    })
-    .then((pageData) => {
-      writeToFile('./dist/index.html', generateHTML(pageData));
-    });
+const generateEmployee = () => {
+  // return if else statements
+  // const { employeeType } = await inquirer.prompt(type);
+  return { id: 1, name: '' };
 };
 
-// TODO: inquirer questions
-const type = [
-  {
-    type: 'list',
-    name: 'employeeType',
-    message: 'Please make an employee type selection:',
-    choices: ['Manager', 'Engineer', 'Intern'],
-  },
-];
+// TODO: need function for initialization
+const init = async () => {
+  const { employeeType } = await inquirer.prompt(questions.type);
+  let additionalData;
+
+  if (employeeType === 'Manager') {
+    additionalData = await inquirer.prompt(questions.managerQuestions);
+  } else if (employeeType === 'Engineer') {
+    additionalData = await inquirer.prompt(questions.engineerQuestions);
+  } else {
+    additionalData = await inquirer.prompt(questions.internQuestions);
+  }
+  console.log({ additionalData });
+  const data = { employeeType, ...additionalData };
+  console.log({ data });
+  // writeToFile('./dist/index.html', generateHTML(data));
+
+  // need assignment of office number function here?
+};
 
 init();
-console.log(type);
