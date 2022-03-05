@@ -35,7 +35,7 @@ function generateHTML(data) {
             return `
             <div class='col'>
               <div class='card h-100'>
-                <div class='card-body'>
+                <div class='card-body background'>
                   <h5 class='card-title'>${employee.name}</h5>
                   <p class='card-text'>${employee.employeeType}</p>
                   <div class='card'>
