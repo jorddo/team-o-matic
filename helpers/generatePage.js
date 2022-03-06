@@ -30,7 +30,8 @@ function generateHTML(data) {
 
             if (employee.office)
               addtlInfo = `Office Number: ${employee.office}`;
-            if (employee.github) addtlInfo = `Github: ${employee.github}`;
+            if (employee.github)
+              addtlInfo = `Github: <a href="https://github.com/${employee.github}">${employee.github}</a>`;
             if (employee.college) addtlInfo = `College: ${employee.college}`;
             return `
             <div class='col'>
@@ -44,7 +45,7 @@ function generateHTML(data) {
                         <div class='card-body'>ID: ${employee.id}</div>
                       </div>
                       <div class='card'>
-                        <div class='card-body'>Email: ${employee.email}</div>
+                        <div class='card-body'>Email: <a href="mailto:${employee.email}">${employee.email}</a></div>
                       </div>
                       <div class='card'>
                         <div class='card-body'>
