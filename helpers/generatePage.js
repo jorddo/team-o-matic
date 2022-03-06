@@ -17,7 +17,7 @@ function generateHTML(data) {
   </head>
 
   <header>
-    <h1>Team-O-Matic</h1>
+    <h1 class="title">Team-O-Matic</h1>
   </header>
 
   <body>
@@ -39,7 +39,7 @@ function generateHTML(data) {
                   <h5 class='card-title'>${employee.name}</h5>
                   <p class='card-text'>${employee.employeeType}</p>
                   <div class='card'>
-                    <div class='card-body'>
+                    <div class='card-body foreground'>
                       <div class='card'>
                         <div class='card-body'>ID: ${employee.id}</div>
                       </div>
